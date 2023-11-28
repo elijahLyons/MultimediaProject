@@ -19,6 +19,19 @@
             background-color: #333333; /* Darker background color */
         }
 
+        a:link {
+            color: lightgray;
+            
+        }
+
+        a:visited {
+            color: lightgray;
+        }
+
+        a:hover {
+            color: white;
+        }
+
         body {
             font-family: Arial, sans-serif;
             margin: 20px;
@@ -33,17 +46,16 @@
         }
 
         .folder-container {
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 20px;
-            position: relative;
-            top: 300px; /* Adjust as needed */
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px 20px;
+            
+            
         }
 
         .folder {
             text-align: center;
+            margin-top: 50px;
         }
 
             .folder img {
@@ -108,18 +120,20 @@
         }
 
         .div {
-            z-index: -2;
+            
             background-color: #372626;
             word-wrap: normal;
             font: bolder;
             position: absolute;
-            top: 279px;
+            top: 269px;
             margin-left: 5px;
             width: 70%;
-            height: 450px;
+            height: 419px;
             left: 56%;
-            transform: translate(-50%, -50%);
+            transform: translate(-50%, -44%);
             border-style: none;
+            overflow-y: scroll;
+            
         }
 
         footer {
@@ -131,6 +145,7 @@
         }
     </style>
 </head>
+
 <body>
 
     <header>
@@ -149,6 +164,34 @@
     </nav>
 
     <div class="div folder-container">
+
+
+    <?php
+
+        $dir = "UserVideos";
+
+        $videos = scandir($dir);
+
+        foreach ($videos as $video) {
+
+            $file = $dir ."/". $video;
+
+            if (is_file($file)) {
+                echo (
+                '<div class="folder">
+                <video controls width="250" height="100">
+                    <source src="' . $file . '#t=0.1" />
+                </video>
+                    <div class="folder-caption">
+                        <p><a href="download.php?file=' . $file . '">' . $video . '</a></p>
+                    </div>
+                </div>');
+            }
+        }
+
+?>
+
+    <!--
         <div class="folder">
             <img src="images/folder.png" alt="Folder 1">
             <div class="folder-caption">
@@ -170,6 +213,7 @@
             </div>
         </div>
 
+    -->
 
     </div>
 

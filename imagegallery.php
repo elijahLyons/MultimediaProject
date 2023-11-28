@@ -132,10 +132,10 @@
             word-wrap: normal;
             font: bolder;
             position: absolute;
-            top: 279px;
+            top: 269px;
             margin-left: 5px;
             width: 70%;
-            height: 403px;
+            height: 419px;
             left: 56%;
             transform: translate(-50%, -44%);
             border-style: none;
@@ -173,8 +173,6 @@
 
     <?php
 
-        $count = 0;
-
         $dir = "UserImages";
 
         $images = scandir($dir);
@@ -193,8 +191,6 @@
                 </div>');
             }
             
-
-            $count++;
         }
 
     ?>
